@@ -32,8 +32,10 @@ class EquipoScreen extends StatelessWidget {
                     Column(
                       children: [
                         Image.asset('assets/Andriuw.png'),
-                        Text('Andrés Velásquez'),
-                        Text('avelasquezravanal@utem.cl')
+                        Text('Andrés Velásquez',
+                            style: TextStyle(fontSize: 20)),
+                        Text('avelasquezravanal@utem.cl',
+                            style: TextStyle(fontSize: 15))
                       ],
                     )
                   ],
@@ -50,8 +52,9 @@ class EquipoScreen extends StatelessWidget {
                     Column(
                       children: [
                         Image.asset('assets/Camilo.png'),
-                        Text('Camilo Navas'),
-                        Text('camilo.navasm@utem.cl')
+                        Text('Camilo Navas', style: TextStyle(fontSize: 20)),
+                        Text('camilo.navasm@utem.cl',
+                            style: TextStyle(fontSize: 15))
                       ],
                     )
                   ],

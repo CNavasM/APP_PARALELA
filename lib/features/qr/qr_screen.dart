@@ -42,9 +42,6 @@ class _QrScanState extends State<QrScan> {
         'subject': datos['subject'],
         'jwt': datainfo['jwt']
       });
-      if (kDebugMode) {
-        print(datos['classroom']);
-      }
     }
     return Scaffold(
       body: Column(

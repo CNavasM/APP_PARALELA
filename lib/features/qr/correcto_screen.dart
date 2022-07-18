@@ -15,14 +15,12 @@ class CorrectoScreen extends GetWidget<CorrectoController> {
         'subject': datos['subject'],
         'entrance': '2022-07-15T20:00:37.705Z'
       });
-    } else {
-      controller.SalirApi(datos['jwt'], {
-        'classroom': datos['classroom'],
-        'subject': datos['subject'],
-        'entrance': '2022-07-15T20:00:35.705Z',
-        'leaving': '2022-07-15T21:05:02.007Z'
-      });
     }
+    Get.offAllNamed('/asistencias', arguments: {
+      'classroom': datos['classroom'],
+      'subject': datos['subject'],
+      'jwt': datos['jwt']
+    });
 
     return Scaffold(
       body: Column(

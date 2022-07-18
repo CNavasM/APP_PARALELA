@@ -1,42 +1,94 @@
 import 'package:flutter/material.dart';
-import 'package:app_utem_grupoj/features/detalle/controller/asistencia_controller.dart';
 import 'package:get/get.dart';
 
-class AsistenciaScreen extends GetWidget<AsistenciaController> {
+class AsistenciaScreen extends StatelessWidget {
   const AsistenciaScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var data = Get.arguments;
-    controller.AsistenciaApi(data['jwt']);
     return Scaffold(
-        body: Obx(
-      () => controller.asistencias.value.isEmpty
-          ? Column()
-          : Container(
-              height: MediaQuery.of(context).size.height,
-              child: ListView.builder(
-                  itemCount: controller.asistencias.value.length,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        Text(
-                            'Sala: ${controller.asistencias.value[index].classroom!}'),
-                        Text(
-                            'Seccion: ${controller.asistencias.value[index].subject!}'),
-                        Text(
-                            'Hora Entrada: ${controller.asistencias.value[index].entrance!.toString()}'),
-                        Text(
-                            'Hora Salida: ${controller.asistencias.value[index].leaving!.toString()}'),
-                        Text(
-                            'Correo: ${controller.asistencias.value[index].email!}'),
-                        SizedBox(
-                          height: 20,
-                        )
-                      ],
-                    );
-                  }),
-            ),
-    ));
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(40),
+          child: AppBar(
+            backgroundColor: Colors.blue[10],
+            title: Text('Asistencias'),
+            centerTitle: true,
+          ),
+        ),
+        drawer: menulateral(),
+        body: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            'Sala:',
+                            style: TextStyle(fontSize: 20),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text('Seccion:', style: TextStyle(fontSize: 20)),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text('JWT:', style: TextStyle(fontSize: 20)),
+                          SizedBox(
+                            height: 20,
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                ],
+              )
+            ],
+          ),
+        ));
+  }
+}
+
+class menulateral extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Drawer(
+      child: ListView(
+        children: <Widget>[
+          UserAccountsDrawerHeader(
+              accountName: Text('Bienvenidos'),
+              accountEmail: Text("Elija una opcion"),
+              currentAccountPicture: CircleAvatar(
+                  backgroundColor: Colors.blue,
+                  child: Text('U', style: TextStyle(fontSize: 40.0)))),
+          new ListTile(
+            title: Text("LectorQR"),
+            leading: Icon(Icons.qr_code),
+            onTap: () {
+              Get.toNamed('/ingresar', arguments: ['jwt']);
+            },
+          ),
+          new ListTile(
+            title: Text("Integrantes"),
+            leading: Icon(Icons.accessibility_new_sharp),
+            onTap: () {
+              Get.toNamed('/equipo', arguments: ['jwt']);
+            },
+          ),
+        ],
+      ),
+    );
   }
 }

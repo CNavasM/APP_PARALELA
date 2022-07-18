@@ -1,6 +1,6 @@
 import 'package:app_utem_grupoj/features/detalle/asistencia_screen.dart'
     show AsistenciaScreen;
-import 'package:app_utem_grupoj/features/detalle/controller/asistencia_binding.dart';
+
 import 'package:app_utem_grupoj/features/home/controllers/home_binding.dart';
 import 'package:app_utem_grupoj/features/home/home_screen.dart';
 import 'package:app_utem_grupoj/features/integrantes/integrantes_screen.dart';
@@ -19,9 +19,9 @@ dynamic routes() => [
       GetPage(name: '/qr', page: QrScan.new),
       GetPage(name: '/ingresar', page: IngresarScreen.new),
       GetPage(
-          name: '/asistencias',
-          page: AsistenciaScreen.new,
-          binding: AsistenciaBinding()),
+        name: '/asistencias',
+        page: AsistenciaScreen.new,
+      ),
       GetPage(name: '/equipo', page: EquipoScreen.new),
       GetPage(
           name: '/correcto',
